@@ -80,14 +80,15 @@ taps_score_test(fit, test.component = 1)
 ```
 
 Both can be used to formally test the parametric structure encoded in `A`.
-## Examples
-
-Example usage can be found in the files located in the `example/` directory of the package.
 
 ## Family of Outcome
 
 Currently, one can use the two novel smoothers, `AMatern` and `A2Matern`, to estimate models under any family of outcome supported by `mgcv`.
 For hypothesis testing, `taps_wald_test` also supports all outcome families. However, `taps_score_test` is currently limited to exponential family distributions with canonical link functions.
+
+## Examples
+
+Example usage can be found in the files located in the `example/` directory of the package.
 
 ## License
 
