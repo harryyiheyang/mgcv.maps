@@ -24,5 +24,5 @@ b<-bam(y~s(x0,bs="AMatern",k=10,m=300,xt=list(getA=polynomial,para=2))+s(x1,bs="
 fitb=summary(b)
 plot(b,pages=1)
 summary(b)
-taps_wald_test(b,test.component=2)
-taps_score_test(b,test.component=2)
+taps_wald_test(b,test.component=1)
+taps_score_test(b,test.component=1)

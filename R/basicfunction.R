@@ -130,3 +130,20 @@ ecdf_x <- ecdf(x)(new_x)
 qbeta(ecdf_x, shape1 = alpha, shape2 = beta)
 }
 }
+
+is_canonical_link <- function(fit) {
+if (!inherits(fit, "gam")) stop("fit must be a 'gam' object.")
+
+used_link <- fit$family$link
+
+family_name <- fit$family$family
+canonical_link <- switch(family_name,
+                         "gaussian" = "identity",
+                         "poisson" = "log",
+                         "binomial" = "logit",
+                         "Gamma" = "inverse",
+                         "inverse.gaussian" = "1/mu^2",
+                         stop("Unknown family"))
+
+return(used_link == canonical_link)
+}

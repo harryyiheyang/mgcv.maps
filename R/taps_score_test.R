@@ -27,6 +27,7 @@
 #' @export
 taps_score_test <- function(fit,test.component=1,null.tol=1e-10) {
 if (!inherits(fit, "gam")) stop("fit must be a 'gam' or 'bam' object.")
+if (is_canonical_link(fit)==F) stop("only canonical link is allowed currently.")
 #################### Get basic information #######################
 beta <- fit$coefficients
 Vb   <- vcov.gam(fit)
@@ -40,11 +41,10 @@ phivec=fit$sp
 eta <- fit$linear.predictors
 mu <- fit$fitted.values
 family_info <- fit$family
-g_prime <- family_info$mu.eta(fit$linear.predictors)
 var_mu <- family_info$variance(mu)
 y <- fit$y
-pseudo_response <- eta + g_prime * (y - mu)
-W_diag <- 1/(var_mu * g_prime^2)
+pseudo_response <- eta + (y - mu)/var_mu
+W_diag <- var_mu
 phi0 <- summary(fit)$dispersion
 if (is.null(phi0) || !is.numeric(phi0)) {
 phi0 <- 1
