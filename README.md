@@ -79,7 +79,7 @@ Alternatively, one can also perform a score test variance component using `taps_
 taps_score_test(fit, test.component = 1)
 ```
 
-Both can be used to formally test the parametric structure encoded in `A`.
+Both can be used to formally test the parametric structure encoded in `A`. In these two test functions, `test.component` refers to the index of smooth term to be tested.
 
 ## Family of Outcome
 
