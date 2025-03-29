@@ -32,7 +32,7 @@ if (is_canonical_link(fit)==F) stop("only canonical link is allowed currently.")
 beta <- fit$coefficients
 Vb   <- vcov.gam(fit)
 X <- predict(fit, fit$model, type = "lpmatrix")
-if (nrow(X)>1000) cat("Note: score test can be substantially time-consuming for large sample size.\n")
+if (nrow(X)>5000) cat("Note: score test can be substantially time-consuming for large sample size.\n")
 rdf <- fit$df.residual
 smooth_terms <- fit$smooth
 p=length(smooth_terms)
